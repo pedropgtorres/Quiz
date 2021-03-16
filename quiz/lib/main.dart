@@ -40,7 +40,7 @@ class PerguntaApp extends StatelessWidget{
             ),
             ElevatedButton(
                 onPressed: null,
-                child: Text('Apenas para exibir um botão desabilitado')
+                child: Text('Desabilitado')
             )
           ],
         ),
