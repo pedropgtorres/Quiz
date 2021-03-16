@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+/*
+    Objetivo: Criar um app que simule um quiz.
+    Autor: Paulo Torres
+    Data: 08/03/2021
+*/
+
 main() => runApp(PerguntaApp());
 
 class PerguntaApp extends StatelessWidget{
