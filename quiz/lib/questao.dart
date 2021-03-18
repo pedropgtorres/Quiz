@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /*
-    Objetivo: Criar widget para as perguntas.
+    Objetivo: Criar classe para as perguntas.
     Autor: Paulo Torres
     Data: 18/03/2021
 */
