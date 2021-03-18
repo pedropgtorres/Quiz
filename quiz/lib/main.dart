@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/questao.dart';
+import 'package:quiz/resposta.dart';
 
 /*
     Objetivo: Criar um app que simule um quiz.
@@ -23,11 +24,6 @@ class _PerguntaAppState extends State<PerguntaApp>{
     setState(() {
       _perguntaSelecionada++;
     });
-    print(_perguntaSelecionada);
-  }
-
-  void Resposta(){
-    print('Resposta 1...');
   }
 
   @override
@@ -35,6 +31,12 @@ class _PerguntaAppState extends State<PerguntaApp>{
     final List<String> perguntas = [
       'Qual é a sua cor favorita?',
       'Qual é o seu animal favorito?'
+    ];
+
+    final List<String> respostas = [
+      'Resposta 1',
+      'Resposta 2',
+      'Resposta 3'
     ];
 
     return MaterialApp(
@@ -45,24 +47,9 @@ class _PerguntaAppState extends State<PerguntaApp>{
         body: Column(
           children: [
             Questao(perguntas[_perguntaSelecionada]),
-            ElevatedButton(
-                onPressed: _Responder,
-                child: Text('Resposta 1')
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  print('Resposta 2...');
-                },
-                child: Text('Resposta 2')
-            ),
-            ElevatedButton(
-                onPressed: () => print('Resposta 3...'),
-                child: Text('Resposta 3')
-            ),
-            ElevatedButton(
-                onPressed: null,
-                child: Text('Desabilitado')
-            )
+            Resposta(respostas[0]),
+            Resposta(respostas[1]),
+            Resposta(respostas[2])
           ],
         ),
       ),
