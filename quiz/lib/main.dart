@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quiz/questao.dart';
 
 /*
     Objetivo: Criar um app que simule um quiz.
@@ -9,19 +10,20 @@ import 'package:flutter/material.dart';
 main() => runApp(PerguntaApp());
 
 class PerguntaApp extends StatefulWidget{
-  PerguntaAppState createState(){
-    return PerguntaAppState();
+  _PerguntaAppState createState(){
+    return _PerguntaAppState();
   }
+
 }
 
-class PerguntaAppState extends State<PerguntaApp>{
-  var perguntaSelecionada=0;
+class _PerguntaAppState extends State<PerguntaApp>{
+  var _perguntaSelecionada=0;
 
-  void Responder(){
+  void _Responder(){
     setState(() {
-      perguntaSelecionada++;
+      _perguntaSelecionada++;
     });
-    print(perguntaSelecionada);
+    print(_perguntaSelecionada);
   }
 
   void Resposta(){
@@ -42,9 +44,9 @@ class PerguntaAppState extends State<PerguntaApp>{
         ),
         body: Column(
           children: [
-            Text(perguntas[perguntaSelecionada]),
+            Questao(perguntas[_perguntaSelecionada]),
             ElevatedButton(
-                onPressed: Responder,
+                onPressed: _Responder,
                 child: Text('Resposta 1')
             ),
             ElevatedButton(
