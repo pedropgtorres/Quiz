@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quiz/questao.dart';
-import 'package:quiz/resposta.dart';
+import 'package:quiz/questionario.dart';
+import 'package:quiz/resultado.dart';
 
 /*
     Objetivo: Criar um app que simule um quiz.
@@ -20,7 +20,7 @@ class PerguntaApp extends StatefulWidget{
 class _PerguntaAppState extends State<PerguntaApp>{
   var _perguntaSelecionada=0;
 
-  final List< Map <String,Object> > _perguntas = const [
+  final List<Map <String,Object>> _perguntas = const [
     {
       'pergunta':'Qual é a sua cor favorita?',
       'resposta':['Preto','Vermelho','Verde','Branco']
@@ -55,16 +55,13 @@ class _PerguntaAppState extends State<PerguntaApp>{
         appBar: AppBar(
           title: Text("Quiz"),
         ),
-        body: temPergSelect ? Column(
-          children: [
-            Questao(_perguntas[_perguntaSelecionada]['pergunta']),
-            ...respostas.map((respostas) => Resposta(respostas, _responder)).toList(),
-          ],
-        ) : Center(
-          child: Text('Parabéns!!!',
-          style: TextStyle(fontSize: 28),
-          ),
-        ),
+        body: temPergSelect
+            ? Questionario(
+                perguntas: _perguntas,
+                perguntaSelecionada: _perguntaSelecionada,
+                responder: _responder,
+        )
+            : Resultado()
       ),
     );
   }
