@@ -19,25 +19,51 @@ class PerguntaApp extends StatefulWidget{
 
 class _PerguntaAppState extends State<PerguntaApp>{
   var _perguntaSelecionada=0;
+  var _pontuacaoTotal=0;
 
   final List<Map <String,Object>> _perguntas = const [
     {
       'pergunta':'Qual é a sua cor favorita?',
-      'resposta':['Preto','Vermelho','Verde','Branco']
+      'resposta':[
+        {'texto': 'Preto', 'pontos': 10},
+        {'texto': 'Vermelho', 'pontos': 1},
+        {'texto': 'Verde', 'pontos': 3},
+        {'texto': 'Branco', 'pontos': 5}
+        ]
     },
     {
       'pergunta':'Qual é a seu animal favorito?',
-      'resposta':['Coelho','Cobra','Elefante','Leão']
+      'resposta':[
+        {'texto': 'Coelho', 'pontos': 3},
+        {'texto': 'Cobra', 'pontos': 1},
+        {'texto': 'Elefante', 'pontos': 5},
+        {'texto': 'Leão', 'pontos': 10}
+        ]
     },
     {
       'pergunta':'Qual seu instrutor favorito?',
-      'resposta':['Maria','João','Leo','Pedro']
+      'resposta':[
+        {'texto': 'Maria', 'pontos': 1},
+        {'texto': 'João', 'pontos': 3},
+        {'texto': 'Leo', 'pontos': 5},
+        {'texto': 'Pedro', 'pontos': 10}
+        ]
     }
   ];
 
-  void _responder(){
-    setState(() {
+  void _responder(int pontuacao) {
+    if (temPergSelect) {
+      setState(() {
         _perguntaSelecionada++;
+        _pontuacaoTotal += pontuacao;
+      });
+    }
+  }
+
+  void _refresh(){
+    setState((){
+      _perguntaSelecionada=0;
+      _pontuacaoTotal=0;
     });
   }
 
@@ -48,12 +74,13 @@ class _PerguntaAppState extends State<PerguntaApp>{
   @override
   Widget build(BuildContext context) {
 
-    List<String> respostas = temPergSelect ? _perguntas[_perguntaSelecionada]['resposta'] : null;
+    List<Map<String,Object>> respostas = temPergSelect ? _perguntas[_perguntaSelecionada]['resposta'] : null;
 
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text("Quiz"),
+          title: Text("Quiz",
+          textAlign: TextAlign.center),
         ),
         body: temPergSelect
             ? Questionario(
@@ -61,7 +88,7 @@ class _PerguntaAppState extends State<PerguntaApp>{
                 perguntaSelecionada: _perguntaSelecionada,
                 responder: _responder,
         )
-            : Resultado()
+            : Resultado(_pontuacaoTotal, _refresh)
       ),
     );
   }

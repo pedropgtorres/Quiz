@@ -15,6 +15,7 @@ class Resposta extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Container(
+      margin: EdgeInsets.fromLTRB(20, 2, 20, 2) ,
       width: double.infinity,
         child: ElevatedButton(
             onPressed: onSelect,
