@@ -32,8 +32,8 @@ class Questionario extends StatelessWidget {
     return Column(
       children: <Widget> [
         Questao(perguntas[perguntaSelecionada]['pergunta']),
-        ...respostas.map((respostas) {
-          return Resposta(respostas['texto'], () => responder(respostas['pontos']));
+        ...respostas.map((resp) {
+          return Resposta(resp['texto'], () => responder(resp['pontos']));
           }).toList(),
       ],
     );

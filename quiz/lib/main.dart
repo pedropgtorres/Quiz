@@ -51,6 +51,10 @@ class _PerguntaAppState extends State<PerguntaApp>{
     }
   ];
 
+  bool get temPergSelect{
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
   void _responder(int pontuacao) {
     if (temPergSelect) {
       setState(() {
@@ -65,10 +69,6 @@ class _PerguntaAppState extends State<PerguntaApp>{
       _perguntaSelecionada=0;
       _pontuacaoTotal=0;
     });
-  }
-
-  bool get temPergSelect{
-    return _perguntaSelecionada < _perguntas.length;
   }
 
   @override
